@@ -22,11 +22,15 @@
         <input type="password" id="password" name="password" required><br><br>
 
         <label for="priority">Most Wanted Priority:</label>
-        <select id="priority" name="priority">
+        <form method="post">
             {% for item in priority_items %}
-                <option value="{{ item }}">{{ item }}</option>
+                <div>
+                    <input type="checkbox" id="{{ item }}" name="priority" value="{{ item }}">
+                    <label for="{{ item }}">{{ item }}</label>
+                </div>
             {% endfor %}
-        </select><br><br>
+            <!-- <button type="submit">Submit</button> -->
+        </form>
 
         <input type="submit" value="Submit">
     </form>

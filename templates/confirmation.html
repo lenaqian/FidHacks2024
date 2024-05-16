@@ -7,6 +7,9 @@
     <h2>Confirmation</h2>
     <p>Role: {{ role }}</p>
     <p>Email: {{ email }}</p>
-    <p>Most Wanted Priority: {{ priority }}</p>
+    <!-- <p>Most Wanted Priority: {{ priority }}</p> -->
+    {% for priority in selected_priorities %}
+        <li>{{ priority }}</li>
+    {% endfor %}
 </body>
 </html>

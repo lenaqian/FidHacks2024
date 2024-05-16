@@ -8,6 +8,7 @@ users = {
     'user1': {'email': 'user1@example.com', 'password': 'password1', 'role': 'mentor', 'priority': 'Negotiation tactics'},
     'user2': {'email': 'user2@example.com', 'password': 'password2', 'role': 'mentee', 'priority': 'Investing'}
 }
+priority_items = ["Investment", "Networking", "Retirement", "Healthcare", "Education"]
 
 @app.route('/')
 def index():
@@ -16,14 +17,21 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        if username in users and users[username]['password'] == password:
-            session['username'] = username
-            return redirect('/dashboard')
+        if 'make_account' in request.form:  # Check if the user clicked the "Create Account" button
+            # Handle account creation logic here
+            # You can render a different template for account creation or redirect to a separate route for account creation
+            return redirect('/make_account')  # Redirect to the account creation page
         else:
-            return render_template('login.html', error='Invalid username or password')
+            # Handle login logic here
+            username = request.form['username']
+            password = request.form['password']
+            if username in users and users[username]['password'] == password:
+                session['username'] = username
+                return redirect('/dashboard')
+            else:
+                return render_template('login.html', error='Invalid username or password')
     return render_template('login.html')
+
 
 @app.route('/dashboard')
 def dashboard():
@@ -36,10 +44,7 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect('/login')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template('logout.html')
 
 
 @app.route('/make_account', methods=['GET', 'POST'])
@@ -51,20 +56,24 @@ def make_account():
 
         role = request.form['role']
         email = request.form['email']
-        priority = request.form['priority']
+        # priority = request.form['priority']
+        selected_priorities = request.form.getlist('priority')
+        # selected_priorities_list = list(selected_priorities)
 
         # Process the data (store in database, etc.)
         # For now, just print the data
-        print('Role:', role)
-        print('Email:', email)
-        print('Priority:', priority)
+        # print('Role:', role)
+        # print('Email:', email)
+        # print('Priority:', priority)
 
         # Redirect to a confirmation page
-        return render_template('confirmation.html', role=role, email=email, priority=priority)
+        return render_template('confirmation.html', role=role, email=email, selected_priorities=selected_priorities)
     else:
         return render_template('make_account.html', priority_items=priority_items)
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
