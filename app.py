@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, session
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a secure secret key in production
 
+
 # Dummy user data (replace this with your user authentication mechanism)
 users = {
     'user1': {'email': 'user1@example.com', 'password': 'password1', 'role': 'mentor', 'priority': 'Negotiation tactics'},
