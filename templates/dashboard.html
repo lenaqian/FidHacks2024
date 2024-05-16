@@ -2,32 +2,69 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <!-- Add your CSS styles or link to external stylesheets here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .welcome-message {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-info {
+            margin-bottom: 30px;
+        }
+        .profile-info p {
+            margin: 10px 0;
+        }
+        .logout-btn {
+            display: block;
+            width: 100px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Welcome to Your Dashboard</h2>
 
-    {% if role == 'mentor' %}
-        <h3>Your Mentor Dashboard</h3>
-        <!-- Display mentor-specific content -->
-        <p>You are a mentor. Here's some content specific to mentors.</p>
-    {% elif role == 'mentee' %}
-        <h3>Your Mentee Dashboard</h3>
-        <!-- Display mentee-specific content -->
-        <p>You are a mentee. Here's some content specific to mentees.</p>
-    {% else %}
-        <p>Invalid role.</p>
-    {% endif %}
-
-    <hr>
-
-    <h3>Your Profile</h3>
-    <p>Email: {{ email }}</p>
-    <p>Most Wanted Priority: {{ priority }}</p>
-
-    <hr>
-
-    <h3>Other Dashboard Features</h3>
-    <!-- Add other features or links as needed -->
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="welcome-message">
+        <p>Welcome, <strong>{{ username }}</strong>!</p>
+        <p>Your role: <strong>{{ role }}</strong></p>
+    </div>
+    <div class="profile-info">
+        <h2>Your Profile</h2>
+        <p>Email: {{ email }}</p>
+        <p>Most Wanted Priority: {{ priority }}</p>
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
 
 </body>
 </html>

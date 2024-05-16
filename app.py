@@ -1,16 +1,54 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, redirect, request, session
 
 app = Flask(__name__)
-app.secret_key = "fid"  # Used for session management, replace with your secret key
+app.secret_key = 'your_secret_key'  # Change this to a secure secret key in production
+
+# Dummy user data (replace this with your user authentication mechanism)
+users = {
+    'user1': {'email': 'user1@example.com', 'password': 'password1', 'role': 'mentor', 'priority': 'Negotiation tactics'},
+    'user2': {'email': 'user2@example.com', 'password': 'password2', 'role': 'mentee', 'priority': 'Investing'}
+}
 
 @app.route('/')
-def home():
+def index():
     return redirect('/login')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username]['password'] == password:
+            session['username'] = username
+            return redirect('/dashboard')
+        else:
+            return render_template('login.html', error='Invalid username or password')
+    return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    if 'username' in session:
+        user = users[session['username']]
+        return render_template('dashboard.html', username=session['username'], email=user['email'], role=user['role'], priority=user['priority'])
+    else:
+        return redirect('/login')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/login')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 @app.route('/make_account', methods=['GET', 'POST'])
 def make_account():
     if request.method == 'POST':
         # Get form data
+        username = request.form['username']
+        password = request.form['password']
+
         role = request.form['role']
         email = request.form['email']
         priority = request.form['priority']
@@ -28,11 +66,5 @@ def make_account():
 
 
 
-@app.route('/dashboard')
-def dashboard():
-    if 'logged_in' in session and session['logged_in']:
-        return render_template('dashboard.html')
-    else:
-        return redirect('/login')
 
 
