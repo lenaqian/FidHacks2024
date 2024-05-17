@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block body %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentor Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
     <style>
         .confetti {
             position: absolute;
@@ -27,9 +31,6 @@
             }
         }
     </style>
-</head>
-<body>
-
     <div class="container mt-5">
         <h1 class="mb-4">Matched Mentees</h1>
         <ul class="list-group">
@@ -37,10 +38,10 @@
             <li class="list-group-item">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Name: {{ mentee['name'] }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Email: {{ mentee['email'] }}</h6>
-                        <p class="card-text">Priorities: {{ mentee['priorities'] | join(", ") }}</p>
-                        <button class="btn btn-primary" onclick="matchAndFlash(this)">
+                        <h5 class="card-title"><strong>Name:</strong> {{ mentee['name'] }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><strong>Email:</strong> {{ mentee['email'] }}</h6>
+                        <p class="card-text"><strong>Priorities:</strong> {{ mentee['priorities'] | join(", ") }}</p>
+                        <button class="btn btn-primary" onclick="matchAndFlash(this)" style="background-color: black;">
                             Match
                         </button>
                     </div>
@@ -101,4 +102,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+{% endblock %}
