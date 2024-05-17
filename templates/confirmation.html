@@ -1,93 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmation</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        /* Custom CSS */
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+        <style>
+            /* Custom CSS */
+            body, html {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
 
-        body {
-            background-color: lightgreen; /* Set background color of the body */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+            body {
+                background-color: lightgreen; /* Set background color of the body */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
 
-        .confirmation-heading {
-            text-align: center; /* Center the heading */
-            color: white; /* Set text color to white */
-            background-color: black; /* Set background color to black */
-            padding: 15px 0; /* Add padding */
-            border-radius: 5px; /* Add border-radius */
-            font-size: 36px; /* Increase font size of heading */
-            font-weight: bold; /* Make heading bold */
-            width: 100%; /* Make heading full width */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
+            .confirmation-heading {
+                text-align: center; /* Center the heading */
+                color: white; /* Set text color to white */
+                background-color: black; /* Set background color to black */
+                padding: 15px 0; /* Add padding */
+                border-radius: 5px; /* Add border-radius */
+                font-size: 36px; /* Increase font size of heading */
+                font-weight: bold; /* Make heading bold */
+                width: 100%; /* Make heading full width */
+                box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            }
 
-        .content-container {
-            background-color: white; /* Set background color of the content */
-            padding: 20px; /* Add padding */
-            border-radius: 5px; /* Add border-radius */
-            text-align: center; /* Center align the text */
-            width: 100%; /* Make content full width */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
+            .content-container {
+                background-color: white; /* Set background color of the content */
+                padding: 20px; /* Add padding */
+                border-radius: 5px; /* Add border-radius */
+                text-align: center; /* Center align the text */
+                width: 100%; /* Make content full width */
+                box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            }
 
-        .btn-black {
-            background-color: black; /* Set background color of black buttons */
-        }
+            .btn-black {
+                background-color: black; /* Set background color of black buttons */
+            }
 
-        .row {
-            justify-content: center;
-        }
-    </style>
-</head>
-<body>
+            .row {
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
 
-    <div class="container">
-        <div class="confirmation-heading">
-            <h2>Confirmation</h2>
-        </div>
-        <div class="content-container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><strong>Role:</strong> {{ role }}</p>
-                    <p><strong>Name:</strong> {{ name }}</p>
-                    <p><strong>Email:</strong> {{ email }}</p>
-                    <p><strong>Selected Priorities:</strong></p>
-                    <ul class="list-group">
-                        {% for priority in selected_priorities %}
-                            <li class="list-group-item">{{ priority }}</li>
-                        {% endfor %}
-                    </ul>
+        <div class="container">
+            <div class="confirmation-heading">
+                <h2>Confirmation</h2>
+            </div>
+            <div class="content-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Role:</strong> {{ role }}</p>
+                        <p><strong>Name:</strong> {{ name }}</p>
+                        <p><strong>Email:</strong> {{ email }}</p>
+                        <p><strong>Selected Priorities:</strong></p>
+                        <ul class="list-group">
+                            {% for priority in selected_priorities %}
+                                <li class="list-group-item">{{ priority }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <a href="/dashboard" class="btn btn-primary btn-black">Go to Dashboard</a>
-                <a href="/logout" class="btn btn-primary btn-black ml-2">Logout</a>
+        <div class="container">
+            <div class="row mt-3 text-center"> <!-- Updated class to text-center -->
+                <div class="col-md-12"> <!-- Removed col-md-6 class -->
+                    <a href="/dashboard" class="btn btn-primary btn-black">Go to Dashboard</a>
+                    <a href="/logout" class="btn btn-primary btn-black ml-2">Logout</a>
+                </div>
             </div>
         </div>
-    </div>
+        
 
-    <!-- Bootstrap JS and jQuery (optional) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <!-- Bootstrap JS and jQuery (optional) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
