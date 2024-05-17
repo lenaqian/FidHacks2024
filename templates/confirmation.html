@@ -6,13 +6,15 @@
 <body>
     <h2>Confirmation</h2>
     <p>Role: {{ role }}</p>
+    <p>Name: {{ name }}</p>
     <p>Email: {{ email }}</p>
+
     <!-- <p>Most Wanted Priority: {{ priority }}</p> -->
     {% for priority in selected_priorities %}
         <li>{{ priority }}</li>
     {% endfor %}
-    <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
-    <a href="/logout" class="btn btn-primary btn-block">Logout</a>
+    <a href="/logout" class="logout-btn">Logout</a>
+    <a href="/dashboard" class="home-btn">Logout</a>
 
 </body>
 </html>

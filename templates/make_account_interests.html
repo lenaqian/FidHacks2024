@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Make an Account</title>
+</head>
+<body>
+    <h2 style="font-style: italic;">Interests</h2>
+    <form method="post">
+        
+        <!-- <label for="priority" style="font-style: italic;">Interests:</label> -->
+        <form method="post">
+            {% for item in priority_items %}
+                <div>
+                    <input type="checkbox" id="{{ item }}" name="priority" value="{{ item }}">
+                    <label for="{{ item }}">{{ item }}</label>
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- <input type="submit" value="Submit"> -->
+    </form>
+</body>
+</html>
