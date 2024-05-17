@@ -1,20 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-theme.min.css">
 </head>
 <body>
-    <h2>Confirmation</h2>
-    <p>Role: {{ role }}</p>
-    <p>Name: {{ name }}</p>
-    <p>Email: {{ email }}</p>
+    <div class="container">
+        <h2>Confirmation</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Role:</strong> {{ role }}</p>
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Selected Priorities:</strong></p>
+                <ul class="list-group">
+                    {% for priority in selected_priorities %}
+                        <li class="list-group-item">{{ priority }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
+                <a href="/logout" class="btn btn-primary ml-2">Logout</a>
+            </div>
+        </div>
+    </div>
 
-    <!-- <p>Most Wanted Priority: {{ priority }}</p> -->
-    {% for priority in selected_priorities %}
-        <li>{{ priority }}</li>
-    {% endfor %}
-    <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
-    <a href="/logout" class="btn btn-primary btn-block">Logout</a>
-
+    <!-- Bootstrap JS and jQuery (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

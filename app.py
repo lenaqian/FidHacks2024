@@ -5,17 +5,18 @@ app.secret_key = 'your_secret_key'  # Change this to a secure secret key in prod
 
 
 # Dummy user data (replace this with your user authentication mechanism)
-users = {    'user1': {'email': 'user1@example.com', 'password': 'password1', 'role': 'mentor', 'priorities': ['Networking', 'Education']},
-    'user2': {'email': 'user2@example.com', 'password': 'password2', 'role': 'mentee', 'priorities': ['Investment', 'Healthcare']}
+users = {    'user1': {'email': 'user1@example.com', 'password': 'password1', 'role': 'mentor', 'priorities': ['Beginning Investing', 'Work-Life Balance']},
+    'user2': {'email': 'user2@example.com', 'password': 'password2', 'role': 'mentee', 'priorities': ['Intro to Stocks', 'Finding Job Opportunities']}
 }
 
 # Dummy mentee data (replace this with your actual mentee data)
 mentees = [
-    {'name': 'Alice', 'email': 'alice@example.com', 'priorities': ['Networking', 'Education']},
-    {'name': 'Bob', 'email': 'bob@example.com', 'priorities': ['Investment', 'Healthcare']}
+    {'name': 'Alice', 'email': 'alice@example.com', 'priorities': ['Beginning Investing', 'Work-Life Balance']},
+    {'name': 'Bob', 'email': 'bob@example.com', 'priorities': ['Intro to Stocks', 'Finding Job Opportunities']}
 ]
 
-priority_items = ["Investment", "Networking", "Retirement", "Healthcare", "Education"]
+priority_items = ["Financial Basics", "Beginning Investing", "Intro to Stocks", "Intro to Crypto",
+                   "Salary Negotiation", "Transitioning to a New Job", "Work-Life Balance", "Finding Job Opportunities", "Retirement Plans"]
 
 @app.route('/')
 def index():
