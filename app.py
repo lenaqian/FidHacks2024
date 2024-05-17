@@ -12,8 +12,17 @@ users = {    'user1': {'email': 'user1@example.com', 'password': 'password1', 'r
 # Dummy mentee data (replace this with your actual mentee data)
 mentees = [
     {'name': 'Alice', 'email': 'alice@example.com', 'priorities': ['Beginning Investing', 'Work-Life Balance']},
-    {'name': 'Bob', 'email': 'bob@example.com', 'priorities': ['Intro to Stocks', 'Finding Job Opportunities']}
+    {'name': 'Bob', 'email': 'bob@example.com', 'priorities': ['Intro to Stocks', 'Finding Job Opportunities']},
+    {'name': 'Nivedita', 'email': 'nive@example.com', 'priorities': ['Intro to Stocks', 'Intro to Crypto', 'Finding Job Opportunities']},
+    {'name': 'David', 'email': 'david@example.com', 'priorities': ['Transitioning to a New Job', 'Work-Life Balance']},
+    {'name': 'Eve', 'email': 'eve@example.com', 'priorities': ['Intro to Crypto', 'Retirement Plans']},
+    {'name': 'Frank', 'email': 'frank@example.com', 'priorities': ['Beginning Investing', 'Salary Negotiation']},
+    {'name': 'Grace', 'email': 'grace@example.com', 'priorities': ['Finding Job Opportunities', 'Transitioning to a New Job']},
+    {'name': 'Harry', 'email': 'harry@example.com', 'priorities': ['Work-Life Balance', 'Financial Basics']},
+    {'name': 'Ivy', 'email': 'ivy@example.com', 'priorities': ['Intro to Stocks', 'Intro to Crypto']},
+    {'name': 'Jack', 'email': 'jack@example.com', 'priorities': ['Salary Negotiation', 'Retirement Plans']}
 ]
+
 
 priority_items = ["Financial Basics", "Beginning Investing", "Intro to Stocks", "Intro to Crypto",
                    "Salary Negotiation", "Transitioning to a New Job", "Work-Life Balance", "Finding Job Opportunities", "Retirement Plans"]
@@ -78,7 +87,8 @@ def make_account_profile():
         # priority = request.form['priority']
         # selected_priorities = request.form.getlist('priority')
         # # Get form data
-        username = session['username']
+        session['username'] = username
+        # username = session[username]
         # users[username]['priorities'] = selected_priorities
 
         # Create a new user dictionary
