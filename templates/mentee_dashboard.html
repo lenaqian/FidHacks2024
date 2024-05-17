@@ -1,27 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mentor Dashboard</title>
-    <!-- Add your CSS styles or link to external stylesheets here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentee Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Add your CSS styles here */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+            pointer-events: none; /* Prevents confetti from blocking clicks */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotateZ(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Matched Mentors</h1>
-    <ul>
+<div class="container mt-5">
+    <h1 class="mb-4">Matched Mentors</h1>
+    <ul class="list-group">
         {% for mentor in matches %}
-        <li>
-            <strong>Name:</strong> {{ mentor['name'] }}<br>
-            <strong>Email:</strong> {{ mentor['email'] }}<br>
-            <strong>Priorities:</strong> {{ mentor['priorities'] | join(", ") }}
+        <li class="list-group-item">
+            <button class="btn btn-primary" onclick="matchAndFlash(this)">
+                <strong>Name:</strong> {{ mentor['name'] }}<br>
+                <strong>Email:</strong> {{ mentor['email'] }}<br>
+                <strong>Priorities:</strong> {{ mentor['priorities'] | join(", ") }}
+            </button>
         </li>
         {% endfor %}
     </ul>
-    <a href="/logout" class="btn btn-primary">Logout</a>
+    <a href="/logout" class="btn btn-primary mt-3">Logout</a>
 </div>
 
+<script>
+    function matchAndFlash(button) {
+        button.classList.remove('btn-primary'); // Remove primary class
+        button.classList.add('btn-success'); // Add success class for green color
+
+        var message = document.createElement('div');
+        message.classList.add('alert', 'alert-success', 'text-center', 'font-large'); // Add Bootstrap alert class and custom classes
+        message.style.position = 'fixed'; // Fixed position to keep it at the bottom of the page
+        message.style.bottom = '80px'; // 80px from bottom
+        message.style.left = '50%'; // Center horizontally
+        message.style.transform = 'translateX(-50%)'; // Center horizontally
+        message.style.fontSize = '24px'; // Larger font size
+        message.innerHTML = "You Matched!";
+        document.body.appendChild(message);
+
+        // Create multiple confetti elements with random colors
+        for (var i = 0; i < 100; i++) {
+            var confetti = document.createElement('div');
+            confetti.className = 'confetti';
+
+            // Generate random position across the viewport
+            var xPos = Math.random() * window.innerWidth;
+            var yPos = Math.random() * window.innerHeight;
+
+            // Generate random color
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+            // Apply random position and color
+            confetti.style.left = xPos + 'px';
+            confetti.style.top = yPos + 'px';
+            confetti.style.backgroundColor = randomColor;
+
+            // Append confetti to the body
+            document.body.appendChild(confetti);
+        }
+
+        // Remove confetti after animation duration
+        setTimeout(function() {
+            message.remove();
+            document.querySelectorAll('.confetti').forEach(function(el) {
+                el.remove();
+            });
+        }, 3000); // 3000 milliseconds = 3 seconds
+    }
+</script>
+
+<!-- Bootstrap JS and jQuery (optional) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
