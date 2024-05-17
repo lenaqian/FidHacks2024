@@ -1,41 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make an Account</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Make an Account</h2>
-    <form method="post">
-        <label for="role">Role:</label>
-        <select id="role" name="role">
-            <option value="mentor">Mentor</option>
-            <option value="mentee">Mentee</option>
-        </select><br><br>
-
-        <label for="name">Name:</label>
-        <input type="name" id="name" name="name" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <!-- <label for="priority" style="font-style: italic;">Interests:</label>
+    <div class="container mt-5">
+        <h2 class="mb-4">Make an Account</h2>
         <form method="post">
-            {% for item in priority_items %}
-                <div>
-                    <input type="checkbox" id="{{ item }}" name="priority" value="{{ item }}">
-                    <label for="{{ item }}">{{ item }}</label>
-                </div>
-            {% endfor %}
-            <button type="submit">Submit</button>
-        </form> -->
-
-        <input type="submit" value="Submit">
-    </form>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" id="role" name="role">
+                    <option value="mentor">Mentor</option>
+                    <option value="mentee">Mentee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <!-- <label for="priority" style="font-style: italic;">Interests:</label>
+            <form method="post">
+                {% for item in priority_items %}
+                    <div>
+                        <input type="checkbox" id="{{ item }}" name="priority" value="{{ item }}">
+                        <label for="{{ item }}">{{ item }}</label>
+                    </div>
+                {% endfor %}
+                <button type="submit">Submit</button>
+            </form> -->
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+    
+    <!-- Bootstrap JS and jQuery (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
