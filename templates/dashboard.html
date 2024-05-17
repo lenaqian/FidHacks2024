@@ -52,6 +52,11 @@
 </head>
 <body>
 
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="welcome-message">
+        <p>Welcome, <strong>{{ username }}</strong>!</p>
+        <p>Your role: <strong>{{ role }}</strong></p>
     <div class="container">
         <h1>Welcome to Your Dashboard</h1>
         <div class="welcome-message">
@@ -76,7 +81,13 @@
         {% endif %}
         <a href="/logout" class="logout-btn">Logout</a>
     </div>
+    <div class="profile-info">
+        <h2>Your Profile</h2>
+        <p>Email: {{ email }}</p>
+        <p>Most Wanted Priority: {{ priority }}</p>
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
 
 </body>
 </html>
-
