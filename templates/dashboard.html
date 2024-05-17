@@ -52,19 +52,31 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Welcome to Your Dashboard</h1>
-    <div class="welcome-message">
-        <p>Welcome, <strong>{{ username }}</strong>!</p>
-        <p>Your role: <strong>{{ role }}</strong></p>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="welcome-message">
+            <p>Welcome, <strong>{{ username }}</strong>!</p>
+            <p>Your role: <strong>{{ role }}</strong></p>
+        </div>
+        {% if role == 'mentor' %}
+        <div class="profile-info">
+            <h2>Matched Mentees</h2>
+            <ul>
+                {% for mentee in matches %}
+                <li>{{ mentee.name }} - {{ mentee.email }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <div class="profile-info">
+            <h2>Your Profile</h2>
+            <p>Email: {{ email }}</p>
+            <!-- <p>Most Wanted Priority: {{ priority }}</p> -->
+        </div>
+        {% endif %}
+        <a href="/logout" class="logout-btn">Logout</a>
     </div>
-    <div class="profile-info">
-        <h2>Your Profile</h2>
-        <p>Email: {{ email }}</p>
-        <p>Most Wanted Priority: {{ priority }}</p>
-    </div>
-    <a href="/logout" class="logout-btn">Logout</a>
-</div>
 
 </body>
 </html>
+
