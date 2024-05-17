@@ -1,28 +1,69 @@
-
-
 {% extends "layout.html" %}
 {% block body %}
+
 <body>
+    <style>
+        /* Custom CSS */
+        .container {
+            margin-top: 200px; 
+        }
+
+        .login-container {
+            margin-bottom: 40px; /* Increased margin-bottom */
+            padding: 20px;
+            border: 1px solid #ced4da; /* Light gray border */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow */
+            max-width: 400px; /* Limit width */
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        /* Adjust button size */
+        .btn {
+            padding: 10px 20px; /* Larger padding */
+            font-size: 16px;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Adjust form input width */
+        .form-control {
+            width: 100%;
+            margin-bottom: 15px; /* Increased margin */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #ced4da; /* Light gray border */
+        }
+
+        .login-heading {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: black; /* Dark gray text color */
+        }
+
+        .make-account {
+            margin-top: 40px; /* Increased margin-top */
+        }
+    </style>
 
     <div class="container">
         <div class="login-container">
-            <h2 class="text-center">Login</h2>
+            <h2 class="login-heading">Login</h2>
             <!-- Login form -->
             <form action="/login" method="post">
                 <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <!-- <a href="/make_account" class="btn btn-primary btn-block">Make Account</a> -->
-                <a href="/make_account/profile" class="btn btn-primary btn-block">Make Account</a>
-    
+                <button type="submit" class="btn btn-primary btn-block" style="background-color: green; border-color: green;">Login</button>
             </form>
         </div>
+    </div>
+
+    <!-- Make Account button outside the container -->
+    <div class="make-account text-center">
+        <a href="/make_account/profile" class="btn btn-primary" style="background-color: black; border-color: black;">Make Account</a>
     </div>
     
 </body>

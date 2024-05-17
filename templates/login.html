@@ -23,11 +23,6 @@
 </head>
 <body>
 
-{% extends "header2.html" %}
-{% block body %}
-   
-
-
 <div class="container">
     <div class="login-container">
         <h2 class="text-center">Login</h2>
@@ -41,13 +36,13 @@
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block "  style="background-color: black;">Login</button>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
             <!-- <a href="/make_account" class="btn btn-primary btn-block">Make Account</a> -->
-            <a href="/make_account/profile" class="btn btn-primary btn-block"  style="background-color: black;">Make Account</a>
+            <a href="/make_account/profile" class="btn btn-primary btn-block">Make Account</a>
 
         </form>
     </div>
 </div>
-{% endblock body %}
+
 </body>
 </html>
