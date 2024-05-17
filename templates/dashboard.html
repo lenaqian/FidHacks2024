@@ -1,55 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-    <!-- Add your CSS styles or link to external stylesheets here -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .welcome-message {
-            font-size: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .profile-info {
-            margin-bottom: 30px;
-        }
-        .profile-info p {
-            margin: 10px 0;
-        }
-        .logout-btn {
-            display: block;
-            width: 100px;
-            margin: 0 auto;
-            padding: 10px 20px;
-            text-align: center;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .logout-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+{% extends "layout.html" %}
+{% block body %}
 <body>
 
     <div class="container">
@@ -78,5 +28,5 @@
     </div>
 
 </body>
-</html>
+{% endblock %}
 

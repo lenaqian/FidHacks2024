@@ -46,8 +46,8 @@ def login():
                 session['username'] = username
                 return redirect('/dashboard')
             else:
-                return render_template('login.html', error='Invalid username or password')
-    return render_template('login.html')
+                return render_template('login2.html', error='Invalid username or password')
+    return render_template('login2.html')
 
 
 @app.route('/dashboard')
