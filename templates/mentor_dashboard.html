@@ -1,8 +1,35 @@
-{% extends "layout.html" %}
-{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+            pointer-events: none; /* Prevents confetti from blocking clicks */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotateZ(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
 <body>
 
-    <!-- <iframe src="templates\header.html" frameborder="0" width="100%" height="100"></iframe>    -->
     <div class="container mt-5">
         <h1 class="mb-4">Matched Mentees</h1>
         <ul class="list-group">
@@ -21,21 +48,24 @@
             </li>
             {% endfor %}
         </ul>
-        <a href="/logout" class="btn btn-primary mt-3">Logout</a>
+        <a href="/logout" class="btn btn-primary mt-3" style="background-color: black;">Logout</a>
     </div>
+
+    <!-- Container for confetti animation -->
+    <div class="confetti-container"></div>
 
     <script>
         function matchAndFlash(button) {
-            button.classList.remove('btn-primary'); // Remove primary class
-            button.classList.add('btn-success'); // Add success class for green color
+            button.classList.remove('btn-primary');
+            button.classList.add('btn-success');
 
             var message = document.createElement('div');
-            message.classList.add('alert', 'alert-success', 'text-center', 'font-large'); // Add Bootstrap alert class and custom classes
-            message.style.position = 'fixed'; // Fixed position to keep it at the bottom of the page
-            message.style.bottom = '80px'; // 80px from bottom
-            message.style.left = '50%'; // Center horizontally
-            message.style.transform = 'translateX(-50%)'; // Center horizontally
-            message.style.fontSize = '24px'; // Larger font size
+            message.classList.add('alert', 'alert-success', 'text-center', 'font-large');
+            message.style.position = 'fixed';
+            message.style.bottom = '80px';
+            message.style.left = '50%';
+            message.style.transform = 'translateX(-50%)';
+            message.style.fontSize = '24px';
             message.innerHTML = "You Matched!";
             document.body.appendChild(message);
 
@@ -44,20 +74,16 @@
                 var confetti = document.createElement('div');
                 confetti.className = 'confetti';
 
-                // Generate random position across the viewport
                 var xPos = Math.random() * window.innerWidth;
                 var yPos = Math.random() * window.innerHeight;
-
-                // Generate random color
                 var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
 
-                // Apply random position and color
                 confetti.style.left = xPos + 'px';
                 confetti.style.top = yPos + 'px';
                 confetti.style.backgroundColor = randomColor;
 
-                // Append confetti to the body
-                document.body.appendChild(confetti);
+                // Append confetti to the confetti container
+                document.querySelector('.confetti-container').appendChild(confetti);
             }
 
             // Remove confetti after animation duration
@@ -70,9 +96,9 @@
         }
     </script>
 
-<!-- Bootstrap JS and jQuery (optional) -->
+    <!-- Bootstrap JS and jQuery (optional) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-{% endblock %}
+</html>

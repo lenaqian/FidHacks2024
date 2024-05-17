@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentee Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: fall 3s linear infinite;
-            pointer-events: none; /* Prevents confetti from blocking clicks */
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotateZ(0deg);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(100vh) rotateZ(720deg);
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
+{% extends "layout.html" %}
+{% block body %}
 <body>
 <div class="container mt-5">
     <h1 class="mb-4">Matched Mentors</h1>
@@ -96,4 +68,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+{% endblock %}
